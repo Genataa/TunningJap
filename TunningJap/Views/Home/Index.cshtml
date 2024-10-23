@@ -1,21 +1,13 @@
-﻿
-
-<p>Use this page to detail your site's privacy policy.</p>
-<title>Японски Тунинг Части</title>
-<link rel="stylesheet" href="styles.css"> <!-- Можеш да добавиш CSS файл за стил -->
-<script src="java.js"></script>
-
-
-    <header>
-        <h1>Японски Тунинг Части</h1>
-        <nav>
-            <ul>
-                <li><a href="about.html">За Нас</a></li>
-                <li><a href="cars">Продукти</a></li>
-                <li><a href="contact.html">Контакт</a></li>
-            </ul>
-        </nav>
-    </header>
+﻿<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Японски Тунинг Части</title>
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <script src="java.js"></script>
+</head>
+<body>
 
     <div id="popup" class="popup">
         <div class="popup-content">
@@ -24,6 +16,38 @@
             <p>Това е вашият сайт за японски тунинг части.</p>
         </div>
     </div>
+
+    <header>
+        <h1>Японски Тунинг Части</h1>
+        <nav>
+            <ul>
+                <li><a href="about.html">За Нас</a></li>
+                <li><a href="products.html">Продукти</a></li>
+                <li><a href="contact.html">Контакт</a></li>
+            </ul>
+        </nav>
+    </header>
+
+  
+
+    <section id="products" class="product-gallery">
+        <h2>Нашите Продукти</h2>
+        <div class="product">
+            <img src=".jpg" alt="Продукт 1">
+            <h3>Име на Продукт 1</h3>
+            <p>Кратко описание на продукта 1.</p>
+        </div>
+        <div class="product">
+            <img src="product2.jpg" alt="Продукт 2">
+            <h3>Име на Продукт 2</h3>
+            <p>Кратко описание на продукта 2.</p>
+        </div>
+        <div class="product">
+            <img src="product3.jpg" alt="Продукт 3">
+            <h3>Име на Продукт 3</h3>
+            <p>Кратко описание на продукта 3.</p>
+        </div>
+    </section>
 
     <section id="register" class="centered">
         <h2>Регистрация</h2>
@@ -41,3 +65,9 @@
     <footer>
         <p>&copy; 2024 Японски Тунинг Части. Всички права запазени.</p>
     </footer>
+
+</body>
+</html>
+
+
+
