@@ -8,10 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\images\180SX-Racing-Line..._2000x.jpg" />
+    <None Include="wwwroot\css\images\38089_0_24829.webp" />
+    <None Include="wwwroot\css\images\coilovers.webp" />
+    <None Include="wwwroot\css\images\exhaust.webp" />
+    <None Include="wwwroot\css\images\images.jfif" />
+    <None Include="wwwroot\css\images\image_750x_5ec292b67299d.jpg" />
+    <None Include="wwwroot\css\images\lexus.jpg" />
     <None Include="wwwroot\css\styles.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.11" />

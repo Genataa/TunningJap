@@ -159,5 +159,9 @@ namespace TunningJap.Controllers
         {
           return (_context.Car?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+        public IActionResult Products()
+        {
+            return View();
+        }
     }
 }
