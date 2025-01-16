@@ -22,9 +22,12 @@ namespace TunningJap.Controllers
         // GET: Cars
         public async Task<IActionResult> Index()
         {
-            var cars = await _context.Car.ToListAsync(); // Fetch the list of cars asynchronously
-            return View(cars); // Pass the list of cars to the view
+            // Check if you are using async operations here, like database calls.
+            // If you're not using any async operations, remove the 'async' keyword.
+            var cars = await _context.Car.ToListAsync();
+            return View(cars);
         }
+
 
         // GET: Cars/Details/5
         public async Task<IActionResult> Details(int? id)
