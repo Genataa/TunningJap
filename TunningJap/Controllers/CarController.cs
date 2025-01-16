@@ -1,30 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TunningJap.Data;
 using TunningJap.Models;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace TunningJap.Controllers
 {
     public class CarsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public CarsController(ApplicationDbContext context)
+        public CarsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Cars
         public async Task<IActionResult> Index()
         {
-              return _context.Car != null ? 
-                          View(await _context.Car.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Car'  is null.");
+            return View();
         }
 
         // GET: Cars/Details/5
@@ -52,14 +49,30 @@ namespace TunningJap.Controllers
         }
 
         // POST: Cars/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Title")] Car car)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Title,Image")] Car car)
         {
             if (ModelState.IsValid)
             {
+                if (car.Image != null)
+                {
+                    // Generate a unique filename for the image
+                    string fileName = Path.GetFileNameWithoutExtension(car.Image.FileName);
+                    string extension = Path.GetExtension(car.Image.FileName);
+                    string newFileName = fileName + "_" + Guid.NewGuid() + extension;
+                    string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", newFileName);
+
+                    // Save the image to the "wwwroot/images" folder
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await car.Image.CopyToAsync(fileStream);
+                    }
+
+                    // Store the image path in the database
+                    car.ImagePath = "/images/" + newFileName;
+                }
+
                 _context.Add(car);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -84,11 +97,9 @@ namespace TunningJap.Controllers
         }
 
         // POST: Cars/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Title")] Car car)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Title,ImagePath,Image")] Car car)
         {
             if (id != car.Id)
             {
@@ -99,6 +110,25 @@ namespace TunningJap.Controllers
             {
                 try
                 {
+                    // If a new image is uploaded, save it
+                    if (car.Image != null)
+                    {
+                        // Generate a unique filename for the image
+                        string fileName = Path.GetFileNameWithoutExtension(car.Image.FileName);
+                        string extension = Path.GetExtension(car.Image.FileName);
+                        string newFileName = fileName + "_" + Guid.NewGuid() + extension;
+                        string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", newFileName);
+
+                        // Save the new image to the "wwwroot/images" folder
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await car.Image.CopyToAsync(fileStream);
+                        }
+
+                        // Update the image path in the database
+                        car.ImagePath = "/images/" + newFileName;
+                    }
+
                     _context.Update(car);
                     await _context.SaveChangesAsync();
                 }
@@ -141,27 +171,28 @@ namespace TunningJap.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Car == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.Car'  is null.");
-            }
             var car = await _context.Car.FindAsync(id);
             if (car != null)
             {
+                // Optional: Delete the image from the file system when deleting the car
+                if (car.ImagePath != null)
+                {
+                    string filePath = Path.Combine(_webHostEnvironment.WebRootPath, car.ImagePath.TrimStart('/'));
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+                }
+
                 _context.Car.Remove(car);
+                await _context.SaveChangesAsync();
             }
-            
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CarExists(int id)
         {
-          return (_context.Car?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
-        public IActionResult Products()
-        {
-            return View();
+            return _context.Car.Any(e => e.Id == id);
         }
     }
 }
