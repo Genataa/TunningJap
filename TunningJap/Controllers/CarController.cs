@@ -19,9 +19,11 @@ namespace TunningJap.Controllers
         }
 
         // GET: Cars
+        // GET: Cars
         public async Task<IActionResult> Index()
         {
-            return View();
+            var cars = await _context.Car.ToListAsync(); // Fetch the list of cars asynchronously
+            return View(cars); // Pass the list of cars to the view
         }
 
         // GET: Cars/Details/5
