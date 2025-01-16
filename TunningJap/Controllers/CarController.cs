@@ -20,13 +20,13 @@ namespace TunningJap.Controllers
 
         // GET: Cars
         // GET: Cars
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var cars = _context.Car.ToList();
+            // Check if you are using async operations here, like database calls.
+            // If you're not using any async operations, remove the 'async' keyword.
+            var cars = await _context.Car.ToListAsync();
             return View(cars);
         }
-
-
 
         // GET: Cars/Details/5
         public async Task<IActionResult> Details(int? id)
