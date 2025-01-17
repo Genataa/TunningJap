@@ -18,17 +18,16 @@ namespace TunningJap.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        // GET: Cars
-        // GET: Cars
+        
+        
         public async Task<IActionResult> Index()
         {
-            // Check if you are using async operations here, like database calls.
-            // If you're not using any async operations, remove the 'async' keyword.
+            
             var cars = await _context.Car.ToListAsync();
             return View(cars);
         }
 
-        // GET: Cars/Details/5
+       
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Car == null)
@@ -46,13 +45,13 @@ namespace TunningJap.Controllers
             return View(car);
         }
 
-        // GET: Cars/Create
+        
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Cars/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Description,Title,Image")] Car car)
@@ -61,19 +60,18 @@ namespace TunningJap.Controllers
             {
                 if (car.Image != null)
                 {
-                    // Generate a unique filename for the image
+                   
                     string fileName = Path.GetFileNameWithoutExtension(car.Image.FileName);
                     string extension = Path.GetExtension(car.Image.FileName);
                     string newFileName = fileName + "_" + Guid.NewGuid() + extension;
                     string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", newFileName);
 
-                    // Save the image to the "wwwroot/images" folder
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         await car.Image.CopyToAsync(fileStream);
                     }
 
-                    // Store the image path in the database
+                   
                     car.ImagePath = "/images/" + newFileName;
                 }
 
@@ -84,7 +82,7 @@ namespace TunningJap.Controllers
             return View(car);
         }
 
-        // GET: Cars/Edit/5
+        
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Car == null)
@@ -100,7 +98,7 @@ namespace TunningJap.Controllers
             return View(car);
         }
 
-        // POST: Cars/Edit/5
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Title,ImagePath,Image")] Car car)
@@ -114,22 +112,22 @@ namespace TunningJap.Controllers
             {
                 try
                 {
-                    // If a new image is uploaded, save it
+                    
                     if (car.Image != null)
                     {
-                        // Generate a unique filename for the image
+                        
                         string fileName = Path.GetFileNameWithoutExtension(car.Image.FileName);
                         string extension = Path.GetExtension(car.Image.FileName);
                         string newFileName = fileName + "_" + Guid.NewGuid() + extension;
                         string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", newFileName);
 
-                        // Save the new image to the "wwwroot/images" folder
+                        
                         using (var fileStream = new FileStream(filePath, FileMode.Create))
                         {
                             await car.Image.CopyToAsync(fileStream);
                         }
 
-                        // Update the image path in the database
+                      
                         car.ImagePath = "/images/" + newFileName;
                     }
 
@@ -152,7 +150,7 @@ namespace TunningJap.Controllers
             return View(car);
         }
 
-        // GET: Cars/Delete/5
+        
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Car == null)
@@ -170,7 +168,7 @@ namespace TunningJap.Controllers
             return View(car);
         }
 
-        // POST: Cars/Delete/5
+     
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -178,7 +176,7 @@ namespace TunningJap.Controllers
             var car = await _context.Car.FindAsync(id);
             if (car != null)
             {
-                // Optional: Delete the image from the file system when deleting the car
+                
                 if (car.ImagePath != null)
                 {
                     string filePath = Path.Combine(_webHostEnvironment.WebRootPath, car.ImagePath.TrimStart('/'));

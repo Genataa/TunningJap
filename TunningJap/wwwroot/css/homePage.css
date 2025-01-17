@@ -7,10 +7,15 @@
 
 /* Body Styling */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f8f8f8;
-    color: #333;
-    line-height: 1.6;
+    background-image: url('/css/images/Fb Cover Pic.jfif'); /* Correct path to the image */
+    background-size: cover; /* Ensure the image covers the entire body area */
+    background-position: center center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating of the image */
+    height: 200vh; /* Ensure the body takes the full height of the viewport */
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+    font-family: Arial, sans-serif;
+    color: #fff; /* Text color to contrast with the background */
 }
 
 /* Header Styling */
