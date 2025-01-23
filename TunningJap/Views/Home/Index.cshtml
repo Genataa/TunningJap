@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Японски Тунинг Части</title>
-    <link rel="stylesheet" href="~/css/homePage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/homePage.css" />
     <script src="java.js"></script>
 </head>
 <body>
 
+    <!-- Popup Welcome -->
     <div id="popup" class="popup">
         <div class="popup-content">
             <span class="close-btn">&times;</span>
@@ -17,8 +18,11 @@
         </div>
     </div>
 
+    <!-- Header Section -->
     <header>
-        <h1>Японски Тунинг Части</h1>
+        <div class="logo">
+            <h1>Японски Тунинг Части</h1>
+        </div>
         <nav>
             <ul>
                 <li><a href="about.html">За Нас</a></li>
@@ -28,51 +32,55 @@
         </nav>
     </header>
 
-    <section id="products" class="product-gallery">
-        <h2>Най-продавани</h2>
+    <!-- Main Products Section -->
+    <main>
+        <section id="products" class="product-gallery">
+            <h2>Най-продавани</h2>
 
-        <!-- Product 1 (JR-Wheels) -->
-        <div class="product">
-            <h3>Джанти</h3>
-            <p>JR-Wheels е уникална колекция от джанти, създадени през годините въз основа на най-новите автомобилни тенденции.</p>
-            <a href="product-jr-wheels.html">
-                <img src="~/css/images/38089_0_24829.webp" alt="JR-Wheels">
-            </a>
-        </div>
+            <div class="product-list">
+                <!-- Product 1 (JR-Wheels) -->
+                <article class="product">
+                    <h3>Джанти</h3>
+                    <p>JR-Wheels е уникална колекция от джанти, създадени през годините въз основа на най-новите автомобилни тенденции.</p>
+                    <a href="product-jr-wheels.html">
+                        <img src="~/css/images/38089_0_24829.webp" alt="JR-Wheels джанти">
+                    </a>
+                </article>
 
-        <!-- Product 2 (Coilovers) -->
-        <div class="product">
-            <h3>Койлоувър</h3>
-            <p>След много години усъвършенстване на Cygnus Performance X-1 Classic Edition, ние твърдо вярваме, че това е най-добрият достъпен койлоувър комплект на пазара.</p>
-            <a href="product-coilovers.html">
-                <img src="~/css/images/coilovers.jpg" alt="Cygnus Performance X-1">
-            </a>
-        </div>
+                <!-- Product 2 (Coilovers) -->
+                <article class="product">
+                    <h3>Койлоувър</h3>
+                    <p>След много години усъвършенстване на Cygnus Performance X-1 Classic Edition, ние твърдо вярваме, че това е най-добрият достъпен койлоувър комплект на пазара.</p>
+                    <a href="product-coilovers.html">
+                        <img src="~/css/images/coilovers.jpg" alt="Cygnus Performance X-1 койлоувър">
+                    </a>
+                </article>
 
-        <!-- Product 3 (Exhaust) -->
-        <div class="product">
-            <h3>Ауспух</h3>
-            <p>Изпускателните системи на Spec-D са директни плъг анд плей Изработен от качествена неръждаема стомана и CNC обработени фланци за дълъг живот.</p>
-            <a href="product-exhaust.html">
-                <img src="~/css/images/exhaust.webp" alt="Spec-D Exhaust">
-            </a>
-        </div>
+                <!-- Product 3 (Exhaust) -->
+                <article class="product">
+                    <h3>Ауспух</h3>
+                    <p>Изпускателните системи на Spec-D са директни плъг анд плей, изработени от качествена неръждаема стомана и CNC обработени фланци за дълъг живот.</p>
+                    <a href="product-exhaust.html">
+                        <img src="~/css/images/exhaust.webp" alt="Spec-D изпускателна система">
+                    </a>
+                </article>
 
-        <!-- Product 4 (Turbo) -->
-        <div class="product">
-            <h3>Tурбо</h3>
-            <p>Турбокомпресорът е елемент на превозното средство, състоящ се от турбина и компресор, помагащ за повишаването ефективността на автомобилния бутален двигател, чрез усилване на притока на горивна смес в такта всмукване.</p>
-            <a href="product-turbo.html">
-                <img src="~/css/images/Garrett-g25-550-660-turbo-upgrade-hyundai-i30n-veloster-n-elantra-n-kona-n-4_1024x1024@2x.webp" alt="Garrett Turbo">
-            </a>
-        </div>
+                <!-- Product 4 (Turbo) -->
+                <article class="product">
+                    <h3>Tурбо</h3>
+                    <p>Турбокомпресорът помага за повишаване на ефективността на автомобилния бутален двигател чрез усилване на притока на горивна смес в такта всмукване.</p>
+                    <a href="product-turbo.html">
+                        <img src="~/css/images/Garrett-g25-550-660-turbo-upgrade-hyundai-i30n-veloster-n-elantra-n-kona-n-4_1024x1024@2x.webp" alt="Garrett турбокомпресор">
+                    </a>
+                </article>
+            </div>
+        </section>
+    </main>
 
-    </section>
-
+    <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 Японски Тунинг Части. Всички права запазени.</p>
     </footer>
 
 </body>
-</html>
 </html>
