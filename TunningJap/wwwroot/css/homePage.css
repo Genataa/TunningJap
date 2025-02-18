@@ -19,7 +19,7 @@ body {
     margin: 0; /* Remove any default margin */
     padding: 0; /* Remove any default padding */
     font-family: Arial, sans-serif;
-    color: #fff; /* Text color to contrast with the background */
+    color: black; /* Text color to contrast with the background */
 }
 
 /* Header Styling */

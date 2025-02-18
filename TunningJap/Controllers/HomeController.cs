@@ -23,6 +23,13 @@ namespace TunningJap.Controllers
             return View();
         }
 
+        // Във вашия HomeController добавете метод за "За нас"
+        public IActionResult About()
+        {
+            return View();
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

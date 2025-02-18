@@ -2,18 +2,17 @@
 
 namespace TunningJap.Models
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class Car
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Title { get; set; }
-
-        // Add a property to store the image path
-        public string ImagePath { get; set; }
-
-        // Add a property for the uploaded image
-        [NotMapped] // This will be ignored by EF
-        public IFormFile Image { get; set; }
+        public string ImagePath { get; set; }  // This will be mapped to the database
+        [NotMapped]  // Tell EF Core to ignore this property
+        public IFormFile Image { get; set; }   // Used for file uploads
     }
+
 }

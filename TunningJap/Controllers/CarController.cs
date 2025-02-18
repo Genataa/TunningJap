@@ -18,16 +18,12 @@ namespace TunningJap.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        
-        
-        public async Task<IActionResult> Index()
+
+        public IActionResult Index()
         {
-            
-            var cars = await _context.Car.ToListAsync();
-            return View(cars);
+            return View();
         }
 
-       
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Car == null)
