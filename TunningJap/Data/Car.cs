@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TunningJap.Models
+namespace TunningJap.Data
 {
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,8 +11,8 @@ namespace TunningJap.Models
         public string Description { get; set; }
         public string Title { get; set; }
         public string ImagePath { get; set; }  // This will be mapped to the database
-        [NotMapped]  // Tell EF Core to ignore this property
-        public IFormFile Image { get; set; }   // Used for file uploads
+        //[NotMapped]  // Tell EF Core to ignore this property
+      //  public IFormFile Image { get; set; }   // Used for file uploads
     }
 
 }
