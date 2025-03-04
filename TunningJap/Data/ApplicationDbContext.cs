@@ -11,6 +11,9 @@ namespace TunningJap.Data
             : base(options)
         {
         }
+
+
+
         public DbSet<TunningJap.Data.Car> Car { get; set; } = default!;
         public DbSet<TunningJap.Data.testModel> testModel { get; set; } = default!;
       

@@ -62,6 +62,7 @@ namespace TunningJap.Controllers
             {
                 _context.Add(parts);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(parts);

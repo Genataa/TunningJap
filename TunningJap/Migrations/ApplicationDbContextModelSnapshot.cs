@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TunningJap.Data;
 
 #nullable disable
 
-namespace TunningJap.Data.Migrations
+namespace TunningJap.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250221133151_CreateCarTable")]
-    partial class CreateCarTable
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -227,6 +224,23 @@ namespace TunningJap.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TunningJap.Data.Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("BrandOfCar")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brand");
+                });
+
             modelBuilder.Entity("TunningJap.Data.Car", b =>
                 {
                     b.Property<int>("Id")
@@ -254,6 +268,100 @@ namespace TunningJap.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Car");
+                });
+
+            modelBuilder.Entity("TunningJap.Data.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("nameOfCategories")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("TunningJap.Data.ModelCar", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BrandNameId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id_Brand")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NameOfModel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandNameId");
+
+                    b.ToTable("ModelCar");
+                });
+
+            modelBuilder.Entity("TunningJap.Data.Parts", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryNameId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IDCategory")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryNameId");
+
+                    b.ToTable("Parts");
+                });
+
+            modelBuilder.Entity("TunningJap.Data.Parts_Model", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ID_Parts")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ID_model")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ModelCarId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ModelCarId");
+
+                    b.ToTable("Parts_Model");
                 });
 
             modelBuilder.Entity("TunningJap.Data.testModel", b =>
@@ -322,6 +430,39 @@ namespace TunningJap.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TunningJap.Data.ModelCar", b =>
+                {
+                    b.HasOne("TunningJap.Data.Brand", "BrandName")
+                        .WithMany()
+                        .HasForeignKey("BrandNameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BrandName");
+                });
+
+            modelBuilder.Entity("TunningJap.Data.Parts", b =>
+                {
+                    b.HasOne("TunningJap.Data.Category", "CategoryName")
+                        .WithMany()
+                        .HasForeignKey("CategoryNameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CategoryName");
+                });
+
+            modelBuilder.Entity("TunningJap.Data.Parts_Model", b =>
+                {
+                    b.HasOne("TunningJap.Data.ModelCar", "ModelCar")
+                        .WithMany()
+                        .HasForeignKey("ModelCarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ModelCar");
                 });
 #pragma warning restore 612, 618
         }
