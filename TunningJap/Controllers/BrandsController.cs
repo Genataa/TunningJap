@@ -21,7 +21,8 @@ namespace TunningJap.Controllers
         // GET: Brands
         public async Task<IActionResult> Index()
         {
-              return _context.Brand != null ? 
+            
+            return _context.Brand != null ? 
                           View(await _context.Brand.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Brand'  is null.");
         }
