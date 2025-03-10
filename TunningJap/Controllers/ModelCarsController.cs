@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -21,10 +19,8 @@ namespace TunningJap.Controllers
         // GET: ModelCars
         public async Task<IActionResult> Index()
         {
-
-              return _context.ModelCar != null ? 
-                          View(await _context.ModelCar.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.ModelCar'  is null.");
+            var modelCars = _context.ModelCar.Include(m => m.BrandName);
+            return View(await modelCars.ToListAsync());
         }
 
         // GET: ModelCars/Details/5
@@ -36,7 +32,9 @@ namespace TunningJap.Controllers
             }
 
             var modelCar = await _context.ModelCar
+                .Include(m => m.BrandName)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (modelCar == null)
             {
                 return NotFound();
@@ -48,26 +46,27 @@ namespace TunningJap.Controllers
         // GET: ModelCars/Create
         public IActionResult Create()
         {
+            ViewData["Id_Brand"] = new SelectList(_context.Brand, "Id", "BrandOfCar");
             return View();
         }
 
         // POST: ModelCars/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NameOfModel,Id_Brand,Id")] ModelCar modelCar)
         {
-
-
             if (ModelState.IsValid)
             {
                 _context.Add(modelCar);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // Ако има грешка, отново изпращаме списъка с марки
+            ViewData["Id_Brand"] = new SelectList(_context.Brand, "Id", "BrandOfCar", modelCar.Id_Brand);
             return View(modelCar);
         }
+
 
         // GET: ModelCars/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -82,12 +81,12 @@ namespace TunningJap.Controllers
             {
                 return NotFound();
             }
+
+            ViewData["Id_Brand"] = new SelectList(_context.Brand, "Id", "BrandOfCar", modelCar.Id_Brand);
             return View(modelCar);
         }
 
         // POST: ModelCars/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NameOfModel,Id_Brand,Id")] ModelCar modelCar)
@@ -117,6 +116,8 @@ namespace TunningJap.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewData["Id_Brand"] = new SelectList(_context.Brand, "Id", "BrandOfCar", modelCar.Id_Brand);
             return View(modelCar);
         }
 
@@ -129,7 +130,9 @@ namespace TunningJap.Controllers
             }
 
             var modelCar = await _context.ModelCar
+                .Include(m => m.BrandName)  // Включваме Brand, за да имаме BrandOfCar в изгледа
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (modelCar == null)
             {
                 return NotFound();
@@ -145,21 +148,21 @@ namespace TunningJap.Controllers
         {
             if (_context.ModelCar == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.ModelCar'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.ModelCar' is null.");
             }
             var modelCar = await _context.ModelCar.FindAsync(id);
             if (modelCar != null)
             {
                 _context.ModelCar.Remove(modelCar);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ModelCarExists(int id)
         {
-          return (_context.ModelCar?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.ModelCar?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
