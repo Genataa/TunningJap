@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TunningJap.Data;
 
@@ -11,9 +12,11 @@ using TunningJap.Data;
 namespace TunningJap.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250310132630_CreateModels")]
+    partial class CreateModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -295,9 +298,6 @@ namespace TunningJap.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("Brand")
-                        .HasColumnType("int");
-
                     b.Property<int>("Id_Brand")
                         .HasColumnType("int");
 
@@ -307,7 +307,7 @@ namespace TunningJap.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Brand");
+                    b.HasIndex("Id_Brand");
 
                     b.ToTable("ModelCar");
                 });
@@ -415,7 +415,9 @@ namespace TunningJap.Migrations
                 {
                     b.HasOne("TunningJap.Data.Brand", "BrandName")
                         .WithMany()
-                        .HasForeignKey("Brand");
+                        .HasForeignKey("Id_Brand")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("BrandName");
                 });

@@ -21,6 +21,7 @@ namespace TunningJap.Controllers
         // GET: ModelCars
         public async Task<IActionResult> Index()
         {
+
               return _context.ModelCar != null ? 
                           View(await _context.ModelCar.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.ModelCar'  is null.");
@@ -57,6 +58,8 @@ namespace TunningJap.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NameOfModel,Id_Brand,Id")] ModelCar modelCar)
         {
+
+
             if (ModelState.IsValid)
             {
                 _context.Add(modelCar);

@@ -1,4 +1,6 @@
-﻿namespace TunningJap.Data
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace TunningJap.Data
 {
     public class Parts:BaseEntity
     {
@@ -6,6 +8,9 @@
         public decimal Price { get; set; }
         public int IDCategory { get; set; }
 
-        public Category CategoryName { get; set; }
+        [ForeignKey("IDCategory")]
+        public virtual Category? CategoryName { get; set; }
+        // Колекция от PartsModel, за да се реализира много към много връзка
+        public ICollection<Parts_Model>?  Parts_Models { get; set; }
     }
 }
