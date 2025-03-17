@@ -40,5 +40,7 @@ namespace TunningJap.Data
                 .WithMany(p => p.Parts_Models)  // Използвайте PartsModels тук
                 .HasForeignKey(pm => pm.ID_Parts);
         }
+
+        public DbSet<TunningJap.Data.Wheels> Wheels { get; set; } = default!;
     }
 }
