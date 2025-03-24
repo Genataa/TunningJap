@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,90 +9,83 @@ using TunningJap.Data;
 
 namespace TunningJap.Controllers
 {
-    
-    public class CarsController : Controller
+    public class CoiloversController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public CarsController(ApplicationDbContext context)
+        public CoiloversController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Cars
+        // GET: Coilovers
         public async Task<IActionResult> Index()
         {
-              return _context.Car != null ? 
-                          View(await _context.Car.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Car'  is null.");
+            return _context.Coilovers != null ?
+                        View(await _context.Coilovers.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.Coilovers'  is null.");
         }
 
-        // GET: Cars/Details/5
+        // GET: Coilovers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Car == null)
+            if (id == null || _context.Coilovers == null)
             {
                 return NotFound();
             }
 
-            var car = await _context.Car
+            var coilovers = await _context.Coilovers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (car == null)
+            if (coilovers == null)
             {
                 return NotFound();
             }
 
-            return View(car);
+            return View(coilovers);
         }
 
-
-        // GET: Cars/Create
-        [Authorize(Roles = "Admin")]
+        // GET: Coilovers/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Cars/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Coilovers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Title,ImagePath")] Car car)
+        public async Task<IActionResult> Create([Bind("Name,Description,ImagePath,Id")] Coilovers coilovers)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(car);
+                _context.Add(coilovers);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(car);
+            return View(coilovers);
         }
 
-        // GET: Cars/Edit/5
+        // GET: Coilovers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Car == null)
+            if (id == null || _context.Coilovers == null)
             {
                 return NotFound();
             }
 
-            var car = await _context.Car.FindAsync(id);
-            if (car == null)
+            var coilovers = await _context.Coilovers.FindAsync(id);
+            if (coilovers == null)
             {
                 return NotFound();
             }
-            return View(car);
+            return View(coilovers);
         }
 
-        // POST: Cars/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Coilovers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Title,ImagePath")] Car car)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,Description,ImagePath,Id")] Coilovers coilovers)
         {
-            if (id != car.Id)
+            if (id != coilovers.Id)
             {
                 return NotFound();
             }
@@ -102,12 +94,12 @@ namespace TunningJap.Controllers
             {
                 try
                 {
-                    _context.Update(car);
+                    _context.Update(coilovers);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CarExists(car.Id))
+                    if (!CoiloversExists(coilovers.Id))
                     {
                         return NotFound();
                     }
@@ -118,49 +110,49 @@ namespace TunningJap.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(car);
+            return View(coilovers);
         }
 
-        // GET: Cars/Delete/5
+        // GET: Coilovers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Car == null)
+            if (id == null || _context.Coilovers == null)
             {
                 return NotFound();
             }
 
-            var car = await _context.Car
+            var coilovers = await _context.Coilovers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (car == null)
+            if (coilovers == null)
             {
                 return NotFound();
             }
 
-            return View(car);
+            return View(coilovers);
         }
 
-        // POST: Cars/Delete/5
+        // POST: Coilovers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Car == null)
+            if (_context.Coilovers == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Car'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Coilovers'  is null.");
             }
-            var car = await _context.Car.FindAsync(id);
-            if (car != null)
+            var coilovers = await _context.Coilovers.FindAsync(id);
+            if (coilovers != null)
             {
-                _context.Car.Remove(car);
+                _context.Coilovers.Remove(coilovers);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CarExists(int id)
+        private bool CoiloversExists(int id)
         {
-          return (_context.Car?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Coilovers?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
