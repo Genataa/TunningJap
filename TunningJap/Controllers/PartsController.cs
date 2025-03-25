@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -46,8 +45,6 @@ namespace TunningJap.Controllers
         }
 
         // GET: Parts/Create
-
-        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -121,8 +118,6 @@ namespace TunningJap.Controllers
         }
 
         // GET: Parts/Delete/5
-
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Parts == null)
