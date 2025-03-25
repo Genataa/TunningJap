@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,8 @@ namespace TunningJap.Controllers
         }
 
         // GET: Coilovers/Create
+
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -65,6 +68,8 @@ namespace TunningJap.Controllers
         }
 
         // GET: Coilovers/Edit/5
+
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Coilovers == null)
@@ -114,6 +119,8 @@ namespace TunningJap.Controllers
         }
 
         // GET: Coilovers/Delete/5
+
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Coilovers == null)
