@@ -1,43 +1,61 @@
 ﻿@model TunningJap.Data.Wheels
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Wheel";
 }
 
-<h1>Create</h1>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Create Wheel</h1>
 
-<h4>Wheels</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
-                <input asp-for="ImagePath" class="form-control" />
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h4 class="card-title text-center">Add New Wheel</h4>
+            <hr />
+
+            <form asp-action="Create" class="needs-validation" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- Name Field -->
+                <div class="form-group mb-3">
+                    <label asp-for="Name" class="form-label">Wheel Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter Wheel Name" required />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <!-- Description Field -->
+                <div class="form-group mb-3">
+                    <label asp-for="Description" class="form-label">Description</label>
+                    <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter Description" required></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <!-- Image URL Field -->
+                <div class="form-group mb-3">
+                    <label asp-for="ImagePath" class="form-label">Image URL</label>
+                    <input asp-for="ImagePath" class="form-control" placeholder="Enter Wheel Image URL" required />
+                    <span asp-validation-for="ImagePath" class="text-danger"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group mt-4 text-center">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        <i class="bi bi-plus-circle"></i> Create Wheel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Back to List Button -->
+    <div class="mt-4 text-center">
+        <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

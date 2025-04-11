@@ -1,36 +1,45 @@
 ﻿@model TunningJap.Data.Coilovers
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Coilovers Details";
 }
 
-<h1>Details</h1>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Coilovers Details</h1>
 
-<div>
-    <h4>Coilovers</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <div class="card shadow-lg">
+        <div class="row g-0">
+            <!-- Image Section -->
+            <div class="col-md-6">
+                <img src="@Model.ImagePath" class="img-fluid rounded-start" alt="@Model.Name" style="max-height: 400px; object-fit: cover;">
+            </div>
+
+            <!-- Coilover Details Section -->
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h2 class="card-title">@Model.Name</h2>
+                    <h5 class="card-subtitle mb-3 text-muted">Coilover Details</h5>
+                    <p class="card-text">@Model.Description</p>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-4">Name:</dt>
+                        <dd class="col-sm-8">@Model.Name</dd>
+
+                        <dt class="col-sm-4">Description:</dt>
+                        <dd class="col-sm-8">@Model.Description</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="mt-4 d-flex justify-content-between">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning btn-lg">
+            <i class="bi bi-pencil"></i> Edit
+        </a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+    </div>
 </div>

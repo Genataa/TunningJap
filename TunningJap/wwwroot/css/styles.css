@@ -143,4 +143,471 @@ footer {
     cursor: pointer;
     float: right;
 }
+body {
+    background: linear-gradient(135deg, #32cd32, #006400);
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.container {
+    max-width: 1000px;
+    margin-top: 40px;
+    z-index: 1;
+}
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    border-radius: 25px;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+.form-control {
+    border-radius: 25px;
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+h1 {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.btn-outline-success {
+    border-color: #28a745;
+    color: #28a745;
+    border-radius: 25px;
+}
+
+    .btn-outline-success:hover {
+        background-color: #28a745;
+        color: white;
+    }
+<style >
+/* Background */
+body {
+    background: linear-gradient(135deg, #f0f4f8, #ffffff);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Card Hover Effect */
+.transform-hover:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.pagination {
+    font-size: 1.1rem;
+}
+
+    .pagination .page-link {
+        border-radius: 50px;
+    }
+
+    .pagination .active .page-link {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .pagination .page-link:hover {
+        background-color: #218838;
+        color: white;
+    }
+
+/* Search Bar */
+.input-group .form-control {
+    border-radius: 50px;
+    padding-left: 20px;
+    font-size: 1rem;
+}
+
+.input-group button {
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+}
+
+/* Create Button */
+.btn-outline-success {
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+}
+
+    /* Hover effects for buttons */
+    .btn-outline-success:hover {
+        background-color: #28a745;
+        color: white;
+    }
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+</style >
+}
+<style >
+/* Background */
+body {
+    background: linear-gradient(135deg, #f0f4f8, #ffffff);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Card Hover Effect */
+.transform-hover:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+/* Card Content */
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card-subtitle {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+.card-text {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Styling for Description and DL */
+.dl-horizontal dt {
+    font-weight: bold;
+    color: #333;
+}
+
+.dl-horizontal dd {
+    color: #555;
+}
+
+.dl-horizontal dd,
+.dl-horizontal dt {
+    font-size: 1rem;
+}
+
+/* Action Buttons */
+.btn-lg {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.btn-outline-success {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+    .btn-outline-success:hover {
+        background-color: #28a745;
+        color: white;
+    }
+
+.btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: white;
+    }
+
+/* Image Styles */
+.img-fluid {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+</style >
+}
+<style >
+/* Background */
+body {
+    background: linear-gradient(135deg, #f0f4f8, #ffffff);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Card Hover Effect */
+.transform-hover:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+/* Card Content */
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.form-label {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+}
+
+/* Action Buttons */
+.btn-lg {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+        color: white;
+    }
+
+.btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: white;
+    }
+
+/* Image Styles */
+.img-fluid {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Preview */
+#imagePreview {
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    max-width: 100%;
+}
+
+</style >
+<style >
+/* General Page Background and Styling */
+body {
+    background: #f9fafb;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Image Hover Effect - Zoom In */
+.img-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+    .img-container:hover {
+        transform: scale(1.05);
+    }
+
+.custom-img {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 10px;
+}
+
+    .custom-img:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+/* Card Styling */
+.custom-card {
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    /* Hover Effect for Card */
+    .custom-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+/* Text Shadow & Highlight */
+.card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #28a745;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+/* Button Styling */
+.btn {
+    font-size: 0.9rem;
+    padding: 8px 18px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+    .btn-info:hover {
+        background-color: #138496;
+        transform: scale(1.05);
+    }
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+        transform: scale(1.05);
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        transform: scale(1.05);
+    }
+
+/* Layout Adjustments */
+.text-end {
+    text-align: end;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.col-md-4 {
+    flex: 0 0 31%;
+    transition: transform 0.3s ease;
+}
+
+    .col-md-4:hover {
+        transform: scale(1.02);
+    }
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+    }
+}
+
+.btn-sm {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+}
+
+.mx-1 {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+.transform-hover:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+</style >
+}

@@ -4,26 +4,35 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Car List</h1>
+<h1 class="text-center text-success mb-5">Car List</h1>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
+<p class="text-center mb-4">
+    <a asp-action="Create" class="btn btn-lg btn-outline-success shadow-lg">Create New</a>
 </p>
 
+<!-- Search Bar -->
+<form asp-action="Index" method="get" class="mb-5">
+    <div class="input-group mb-3">
+        <input type="text" name="searchString" class="form-control rounded-pill shadow-sm" placeholder="Search for cars..." value="@ViewData["CurrentFilter"]" />
+        <button type="submit" class="btn btn-outline-success rounded-pill">Search</button>
+    </div>
+</form>
+
+<!-- Car List -->
 <div class="row">
     @foreach (var item in Model)
     {
         <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
+            <div class="card h-100 shadow-lg border-light rounded-lg overflow-hidden transform-hover">
                 <img src="@item.ImagePath" class="card-img-top" alt="@item.Name" style="height: 200px; object-fit: cover;">
                 <div class="card-body">
-                    <h5 class="card-title">@item.Name</h5>
+                    <h5 class="card-title text-success">@item.Name</h5>
                     <h6 class="card-subtitle mb-2 text-muted">@item.Title</h6>
-                    <p class="card-text">@item.Description</p>
-                    <div class="d-flex justify-content-between align-items-center">
+                    <p class="card-text text-muted" style="font-size: 0.95rem;">@item.Description</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
                         <div class="btn-group">
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Details</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-success">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Details</a>
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
                         </div>
                     </div>
@@ -33,21 +42,11 @@
     }
 </div>
 
-<!-- Optional: Add a search bar -->
-<form asp-action="Index" method="get" class="mb-4">
-    <div class="input-group">
-        <input type="text" name="searchString" class="form-control" placeholder="Search for cars..." value="@ViewData["CurrentFilter"]" />
-        <div class="input-group-append">
-            <button type="submit" class="btn btn-outline-secondary">Search</button>
-        </div>
-    </div>
-</form>
-
-<!-- Optional: Add pagination -->
-<nav aria-label="Page navigation">
-    <ul class="pagination">
+<!-- Pagination -->
+<nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
         <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item"><a class="page-link" href="#">Next</a></li>

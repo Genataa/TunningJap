@@ -5,10 +5,10 @@
 }
 
 <div class="container mt-4">
-    <h2 class="text-center mb-4">Japanese Wheels Collection</h2>
+    <h2 class="text-center text-success mb-4">Japanese Wheels Collection</h2>
 
     <div class="text-end mb-3">
-        <a asp-action="Create" class="btn btn-primary">
+        <a asp-action="Create" class="btn btn-success btn-lg">
             <i class="bi bi-plus-circle"></i> Add New Wheel
         </a>
     </div>
@@ -16,30 +16,32 @@
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-lg p-3">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg custom-card transform-hover">
                     <div class="row g-0">
-                        <!-- Image Section -->
-                        <div class="col-md-6">
-                            <img src="@item.ImagePath" class="img-fluid rounded" alt="@item.Name" style="height: 160px; object-fit: cover; width: 95%;">
+                        <!-- Image Section with Hover Effect -->
+                        <div class="col-md-12">
+                            <div class="img-container">
+                                <img src="@item.ImagePath" class="img-fluid rounded-top custom-img" alt="@item.Name" />
+                            </div>
                         </div>
 
                         <!-- Content + Buttons Section -->
-                        <div class="col-md-6 d-flex flex-column justify-content-between p-3">
+                        <div class="col-md-12 d-flex flex-column justify-content-between p-3">
                             <div>
-                                <h5 class="card-title">@item.Name</h5>
-                                <p class="card-text">@item.Description</p>
+                                <h5 class="card-title text-success">@item.Name</h5>
+                                <p class="card-text text-muted" style="font-size: 1rem;">@item.Description</p>
                             </div>
 
                             <!-- Buttons Section -->
                             <div class="text-end">
-                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm mx-1">
                                     <i class="bi bi-eye"></i> Details
                                 </a>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm mx-1">
                                     <i class="bi bi-pencil"></i> Edit
                                 </a>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm mx-1">
                                     <i class="bi bi-trash"></i> Delete
                                 </a>
                             </div>
@@ -48,5 +50,12 @@
                 </div>
             </div>
         }
+    </div>
+</div>
+
+
+    <!-- Black box at the bottom -->
+    <div class="bg-dark text-white text-center p-3 mt-auto">
+        <p>Footer content goes here. Contact us at contact@example.com</p>
     </div>
 </div>
