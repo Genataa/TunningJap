@@ -611,3 +611,162 @@ body {
 
 </style >
 }
+.exhaust-index-container {
+    width: 80%;
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.create-button-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.create-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background-color 0.3s;
+}
+
+    .create-button:hover {
+        background-color: #218838;
+    }
+
+.exhaust-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.exhaust-card {
+    width: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+    .exhaust-card:hover {
+        transform: translateY(-10px);
+    }
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card-footer {
+    padding: 10px;
+    text-align: center;
+}
+
+.action-links a {
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+}
+
+.btn-details {
+    background-color: #17a2b8;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.action-links a:hover {
+    opacity: 0.8;
+}
+
+/* Custom Button Styles */
+.custom-btn {
+    padding: 2px 8px;
+    border-radius: 25px;
+    font-weight: 60;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Edit Button */
+.custom-btn-edit {
+    background: linear-gradient(145deg, #ffc107, #e0a800);
+    color: white;
+}
+
+/* Back Button */
+.custom-btn-back {
+    background: linear-gradient(145deg, #17a2b8, #138496);
+    color: white;
+}
+
+/* Hover Effects */
+.custom-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.custom-btn-edit:hover {
+    background: linear-gradient(145deg, #e0a800, #ffc107);
+}
+
+.custom-btn-back:hover {
+    background: linear-gradient(145deg, #138496, #17a2b8);
+}
+
+/* Card Styling */
+.card-body {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Custom image size */
+.custom-img {
+    max-width: 200px; /* Set the maximum width of the image */
+    height: auto; /* Maintain the aspect ratio */
+    margin: 0 auto; /* Center the image horizontally */
+    display: block; /* Make the image behave like a block element */
+}

@@ -43,5 +43,7 @@ namespace TunningJap.Data
 
         public DbSet<TunningJap.Data.Wheels> Wheels { get; set; } = default!;
         public DbSet<Coilovers> Coilovers { get; set; }
+        public DbSet<TunningJap.Data.exhaust> exhaust { get; set; } = default!;
+        public DbSet<TunningJap.Data.turbo> turbo { get; set; } = default!;
     }
 }

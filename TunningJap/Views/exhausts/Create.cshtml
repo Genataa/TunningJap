@@ -1,0 +1,58 @@
+﻿@model TunningJap.Data.exhaust
+
+@{
+    ViewData["Title"] = "Create New Exhaust";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Add New Exhaust</h1>
+
+    <div class="card shadow-lg p-4">
+        <div class="card-body">
+            <h4 class="card-title mb-4">Exhaust Information</h4>
+
+            <!-- Form to create new exhaust -->
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- Name Field -->
+                <div class="form-group mb-3">
+                    <label asp-for="Name" class="form-label">Exhaust Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter exhaust name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <!-- Description Field -->
+                <div class="form-group mb-3">
+                    <label asp-for="Description" class="form-label">Exhaust Description</label>
+                    <textarea asp-for="Description" class="form-control" placeholder="Enter exhaust description" rows="3"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <!-- Image Path Field -->
+                <div class="form-group mb-3">
+                    <label asp-for="ImagePath" class="form-label">Upload Image</label>
+                    <input asp-for="ImagePath" type="file" class="form-control" />
+                    <span asp-validation-for="ImagePath" class="text-danger"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group text-center">
+                    <input type="submit" value="Create" class="btn custom-btn custom-btn-create" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Back to List Link -->
+    <div class="mt-4 text-center">
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
