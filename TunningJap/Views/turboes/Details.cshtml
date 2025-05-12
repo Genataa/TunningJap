@@ -1,41 +1,36 @@
 ﻿@model TunningJap.Data.turbo
 
 @{
-    ViewData["Title"] = "Turbo Details";
+    ViewData["Title"] = "Details";
 }
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4 text-info"><i class="bi bi-eye"></i> Turbo Details</h2>
+<h1>Details</h1>
 
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-lg">
-                @if (!string.IsNullOrEmpty(Model.ImagePath))
-                {
-                    <img src="@Model.ImagePath" class="card-img-top" alt="@Model.Name" style="height: 300px; object-fit: cover;">
-                }
-                else
-                {
-                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center text-white" style="height: 300px;">
-                        <span>No Image Available</span>
-                    </div>
-                }
-
-                <div class="card-body">
-                    <h4 class="card-title">@Model.Name</h4>
-                    <p class="card-text"><strong>Description:</strong> @Model.Description</p>
-                    <p class="card-text text-muted"><strong>Image URL:</strong> @Model.ImagePath</p>
-
-                    <div class="d-flex justify-content-between mt-4">
-                        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">
-                            <i class="bi bi-pencil"></i> Edit
-                        </a>
-                        <a asp-action="Index" class="btn btn-secondary">
-                            <i class="bi bi-arrow-left"></i> Back
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div>
+    <h4>turbo</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>
